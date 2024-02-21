@@ -58,7 +58,7 @@ class Streamer:
         self.second_circle_pos = (500, 280) 
 
         self.last_update_time = time.time()
-        self.update_interval = 5  # 동그라미 위치 업데이트 간격 (초)
+        self.update_interval = 3  # 동그라미 위치 업데이트 간격 (초)
 
         self.first_color = 'gray'
         self.second_color = 'gray'
@@ -182,7 +182,7 @@ class Streamer:
                         cv2.putText(frame, text=self.memory_gesture[idx].upper(), org=(org[0], org[1] + 20), fontFace=cv2.FONT_HERSHEY_SIMPLEX, fontScale=1, color=(255, 255, 255), thickness=2)
 
 
-                self.mp_drawing.draw_landmarks(frame, hand_landmarks, self.mp_hands.HAND_CONNECTIONS)
+                # self.mp_drawing.draw_landmarks(frame, hand_landmarks, self.mp_hands.HAND_CONNECTIONS)
 
         # 여기서는 예시로 왼손과 오른손의 동작을 각각 판별한 뒤, 조건을 만족하는지 확인
         # 실제 구현에서는 화면에 표시되는 동그라미의 색상과 위치에 따라 조건을 설정해야 함
@@ -197,7 +197,7 @@ class Streamer:
                                     
 
             # Add any additional processing (e.g., gesture recognition) here
-        print(first_correct_action, second_correct_action, self.first_color, self.second_color, self.left_hand_action, self.right_hand_action)
+        # print(first_correct_action, second_correct_action, self.first_color, self.second_color, self.left_hand_action, self.right_hand_action)
     
         if first_correct_action and second_correct_action:
             cv2.putText(frame, "Good!", (50, 100), cv2.FONT_HERSHEY_SIMPLEX, 2, (255, 255, 255), 5)
